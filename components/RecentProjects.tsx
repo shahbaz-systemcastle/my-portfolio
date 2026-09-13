@@ -8,69 +8,112 @@ import { PinContainer } from "./ui/Pin";
 const RecentProjects = () => {
   return (
     <div className="py-20">
-      <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">recent projects</span>
-      </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+      {/* Section Heading */}
+      <div className="text-center mb-12">
+        <p className="text-purple text-sm uppercase tracking-[0.3em] mb-3">
+          What I&apos;ve Worked On
+        </p>
+
+        <h1 className="heading">
+          Featured <span className="text-purple">Projects</span>
+        </h1>
+
+        <p className="text-white-200 mt-4 max-w-2xl mx-auto text-sm md:text-base">
+          A selection of web, mobile, and AI projects I&apos;ve worked on.
+        </p>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-16 mt-10">
         {projects.map((item) => (
           <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
+            className="min-h-[30rem] flex items-center justify-center"
           >
             <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
+              title={item.title}
+              href={item.link === "#" ? undefined : item.link}
             >
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+              {/* Project Image */}
+              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-8">
                 <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
+                  className="relative w-full h-full overflow-hidden rounded-2xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <img
+                    src="/bg.png"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+
                 <img
                   src={item.img}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
+                  alt={item.title}
+                  className="z-10 absolute bottom-0 max-h-full object-contain"
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              {/* Project Title */}
+              <h2 className="font-bold lg:text-2xl md:text-xl text-lg">
                 {item.title}
-              </h1>
+              </h2>
 
+              {/* Description */}
               <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                className="lg:text-base font-light text-sm mt-3 min-h-[72px]"
                 style={{
                   color: "#BEC1DD",
-                  margin: "1vh 0",
                 }}
               >
                 {item.des}
               </p>
 
+              {/* Bottom */}
               <div className="flex items-center justify-between mt-7 mb-3">
+                {/* Tech Icons */}
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
                       className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
                       style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
+                        transform: `translateX(-${5 * index}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <img
+                        src={icon}
+                        alt="technology"
+                        className="p-2 w-full h-full object-contain"
+                      />
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+                {/* Link */}
+                {item.link !== "#" ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center text-purple hover:opacity-80 transition"
+                  >
+                    <span className="text-sm md:text-base">
+                      View Project
+                    </span>
+
+                    <FaLocationArrow
+                      className="ms-2"
+                      color="#CBACF9"
+                    />
+                  </a>
+                ) : (
+                  <div className="flex items-center text-white-200">
+                    <span className="text-xs md:text-sm">
+                      Project Details
+                    </span>
+                  </div>
+                )}
               </div>
             </PinContainer>
           </div>

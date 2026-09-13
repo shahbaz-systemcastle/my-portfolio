@@ -134,11 +134,18 @@ export const projects = [
   },
 ];
 
-// Abhi testimonials nahi hain
-export const testimonials = [];
+export const testimonials: {
+  quote: string;
+  name: string;
+  title: string;
+}[] = [];
 
-// Abhi fake company logos show nahi karenge
-export const companies = [];
+export const companies: {
+  id: number;
+  name: string;
+  img: string;
+  nameImg: string;
+}[] = [];
 
 export const workExperience = [
   {

@@ -67,7 +67,7 @@ const rightLists = [
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    const text = "hsu@jsmastery.pro";
+    const text = "mail.shahbazhussain@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };

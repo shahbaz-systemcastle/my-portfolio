@@ -183,7 +183,7 @@ export const socialMedia = [
     id: 2,
     name: "LinkedIn",
     img: "/link.svg",
-    link: "#",
+    link: "https://www.linkedin.com/in/shahbaz-hussain-web-developer?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   
 ];
